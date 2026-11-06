@@ -23,6 +23,7 @@ public final class Config {
     public static final ModConfigSpec.IntValue BUTTON_Y;
     public static final ModConfigSpec.BooleanValue INCLUDE_PATCHOULI;
     public static final ModConfigSpec.BooleanValue INCLUDE_MODONOMICON;
+    public static final ModConfigSpec.BooleanValue INCLUDE_GUIDEME;
     public static final ModConfigSpec.ConfigValue<List<? extends String>> HIDDEN_BOOKS;
     public static final ModConfigSpec.BooleanValue SHOW_SHELF;
     public static final ModConfigSpec.ConfigValue<List<? extends String>> FAVORITE_BOOKS;
@@ -65,6 +66,8 @@ public final class Config {
                 .define("includePatchouli", true);
         INCLUDE_MODONOMICON = c.comment("Lists Modonomicon books in the index.")
                 .define("includeModonomicon", true);
+        INCLUDE_GUIDEME = c.comment("Lists GuideME guides in the index (Applied Energistics 2 and other tech mods use them).")
+                .define("includeGuideme", true);
         HIDDEN_BOOKS = c.comment("Books left out of the index, by book id.")
                 .defineListAllowEmpty("hiddenBooks", List.of(), () -> "", o -> o instanceof String);
         SHOW_SHELF = c.comment("Lists your shelf (written books and items taken on your first join) in the index.")

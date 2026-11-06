@@ -120,6 +120,7 @@ dependencies {
     // Guide book systems: optional, only touched when the mod is loaded.
     compileOnly files('libs/Patchouli-1.21.1-93-NEOFORGE.jar')
     compileOnly files('libs/modonomicon-1.21.1-neoforge-1.123.0.jar')
+    compileOnly files('libs/guideme-21.1.22.jar')
     // Config Panel: optional settings screen, used when installed.
     compileOnly 'dev.configpanel:config-panel-1.21.1:1.0.1'
     runtimeOnly 'dev.configpanel:config-panel-1.21.1:1.0.1'

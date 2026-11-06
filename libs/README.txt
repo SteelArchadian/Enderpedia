@@ -2,4 +2,6 @@ Put these jars here before building (compile-only, not included; download them f
 Mod
 Patchouli-1.21.1-93-NEOFORGE.jar
 Mod
+guideme-21.1.22.jar
+Mod
 modonomicon-1.21.1-neoforge-1.123.0.jar

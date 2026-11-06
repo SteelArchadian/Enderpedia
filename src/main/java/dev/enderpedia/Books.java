@@ -1,5 +1,6 @@
 package dev.enderpedia;
 
+import dev.enderpedia.compat.GuideMeCompat;
 import dev.enderpedia.compat.ModonomiconCompat;
 import dev.enderpedia.compat.PatchouliCompat;
 import net.minecraft.resources.ResourceLocation;
@@ -14,6 +15,7 @@ import java.util.List;
 public final class Books {
     public static final boolean PATCHOULI = ModList.get().isLoaded("patchouli");
     public static final boolean MODONOMICON = ModList.get().isLoaded("modonomicon");
+    public static final boolean GUIDEME = ModList.get().isLoaded("guideme");
 
     private Books() {}
 
@@ -22,6 +24,7 @@ public final class Books {
         List<GuideBook> out = new ArrayList<>(all());
         out.removeIf(b -> b.system().equals("Patchouli") && !Config.INCLUDE_PATCHOULI.get()
                 || b.system().equals("Modonomicon") && !Config.INCLUDE_MODONOMICON.get()
+                || b.system().equals("GuideME") && !Config.INCLUDE_GUIDEME.get()
                 || Config.HIDDEN_BOOKS.get().contains(b.id().toString()));
         return out;
     }
@@ -31,6 +34,7 @@ public final class Books {
         List<GuideBook> out = new ArrayList<>();
         if (PATCHOULI) safeAdd(out, "Patchouli", () -> PatchouliCompat.books());
         if (MODONOMICON) safeAdd(out, "Modonomicon", () -> ModonomiconCompat.books());
+        if (GUIDEME) safeAdd(out, "GuideME", () -> GuideMeCompat.books());
         out.sort(Comparator.comparing((GuideBook b) -> b.modName().toLowerCase())
                 .thenComparing(b -> b.title().getString().toLowerCase()));
         return out;
@@ -44,7 +48,11 @@ public final class Books {
                 ResourceLocation id = PatchouliCompat.bookOf(stack);
                 if (id != null) return id;
             }
-            if (MODONOMICON) return ModonomiconCompat.bookOf(stack);
+            if (MODONOMICON) {
+                ResourceLocation id = ModonomiconCompat.bookOf(stack);
+                if (id != null) return id;
+            }
+            if (GUIDEME) return GuideMeCompat.bookOf(stack);
         } catch (RuntimeException | LinkageError e) {
             Enderpedia.LOGGER.debug("Could not check {} for a guide book", stack, e);
         }

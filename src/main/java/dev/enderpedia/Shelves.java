@@ -31,9 +31,18 @@ public final class Shelves {
         }
         if (!Config.ALLOW_COPIES.get()) return;
         for (GuideBook b : Books.all()) {
-            if (b.id().equals(book) && b.hasItem()) {
-                give(player, b.icon().copy());
+            if (b.id().equals(book)) {
+                if (b.hasItem()) give(player, b.icon().copy());
                 return;
+            }
+        }
+        // GuideME guides are client resources, so a dedicated server may have no list to check against.
+        if (Books.GUIDEME) {
+            try {
+                ItemStack item = dev.enderpedia.compat.GuideMeCompat.item(book);
+                if (!item.isEmpty()) give(player, item);
+            } catch (RuntimeException | LinkageError e) {
+                Enderpedia.LOGGER.debug("Could not make a GuideME item for {}", book, e);
             }
         }
     }

@@ -8,7 +8,7 @@ version="${mod_version}"
 displayName="${mod_name}"
 logoFile="enderpedia.png"
 description='''
-Every guide book in your pack, one click away. Adds a book button to the inventory that opens an index of all Patchouli and Modonomicon books, and stops mods from stuffing guide books into your inventory on first join.
+Every guide book in your pack, one click away. Adds a book button to the inventory that opens an index of all Patchouli, Modonomicon and GuideME books, and stops mods from stuffing guide books into your inventory on first join.
 '''
 
 [[dependencies.${mod_id}]]
@@ -34,6 +34,13 @@ Every guide book in your pack, one click away. Adds a book button to the invento
 
 [[dependencies.${mod_id}]]
     modId="modonomicon"
+    type="optional"
+    versionRange="*"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="guideme"
     type="optional"
     versionRange="*"
     ordering="AFTER"

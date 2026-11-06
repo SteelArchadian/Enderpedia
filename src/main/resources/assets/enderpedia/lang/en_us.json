@@ -2,7 +2,7 @@
   "enderpedia.button": "Guide books",
   "enderpedia.index.title": "Enderpedia",
   "enderpedia.index.search": "Search books or mods...",
-  "enderpedia.index.empty": "No guide books found (Patchouli or Modonomicon) and your shelf is empty",
+  "enderpedia.index.empty": "No guide books found (Patchouli, Modonomicon or GuideME) and your shelf is empty",
   "enderpedia.index.nomatch": "No books match your search",
   "enderpedia.message.moved": "Enderpedia: %s guide book(s) and starting items moved to the book button in your inventory.",
   "key.enderpedia.open": "Open guide book index",
@@ -34,5 +34,6 @@
   "enderpedia.configuration.copies": "Book copies",
   "enderpedia.configuration.allowCopies": "Allow getting book items",
   "enderpedia.configuration.showShelf": "Show your shelf",
-  "enderpedia.configuration.favoriteBooks": "Pinned books"
+  "enderpedia.configuration.favoriteBooks": "Pinned books",
+  "enderpedia.configuration.includeGuideme": "GuideME guides"
 }
